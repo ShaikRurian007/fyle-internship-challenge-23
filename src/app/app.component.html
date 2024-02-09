@@ -1,0 +1,225 @@
+<div style="overflow: hidden">
+  <a href="#main" class="skip-to-content">Skip to Content</a>
+
+  <!-- HEADER -->
+
+  <header class="header" data-header #header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="text-primary"> Git </span>Fyle
+      </a>
+
+      <div class="header-search">
+        <button #searchToggler
+                class="icon-btn search-toggler"
+                aria-controls="searchBox"
+                aria-expanded="false"
+                aria-label="Toggle search"
+                data-search-toggler
+        >
+            <span
+              class="material-symbols-rounded search-icon"
+              aria-hidden="true"
+            >search</span
+            >
+
+          <span class="material-symbols-rounded close-icon" aria-hidden="true"
+          >arrow_back</span
+          >
+        </button>
+
+        <div class="search-box" id="searchBox">
+            <span
+              class="material-symbols-rounded leading-icon"
+              aria-hidden="true"
+            >search</span
+            >
+
+          <input
+            type="search"
+            name="search"
+            aria-label="Search github username"
+            placeholder="Search username*"
+            class="search-field label-1"
+            #searchField
+
+            (keydown.enter)="this.searchUser();"
+
+          />
+
+          <button
+            class="search-btn"
+            aria-label="Search submit"
+            #dataSearchSubmit
+            (click)="this.searchUser()"
+          >
+              <span class="material-symbols-rounded" aria-hidden="true"
+              >search</span
+              >
+
+            <span class="label-1">Search</span>
+          </button>
+        </div>
+      </div>
+
+      <button
+        class="icon-btn theme-btn"
+        aria-pressed="false"
+        aria-label="toggle dark and light theme"
+        data-theme-btn
+        #themeBtn
+        (click)="changeTheme()"
+      >
+        <span class="material-symbols-rounded  sun-icon" aria-hidden="true">light_mode</span>
+        <span class="material-symbols-rounded  moon-icon" aria-hidden="true">dark_mode</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main" id="main">
+    <div class="container">
+      <!-- #PROFILE -->
+      <section class="profile" data-profile-card #profileCard></section>
+
+      <!-- TAB -->
+      <section class="tab-container">
+        <div class="tab-list" aria-label="Tab navigation" role="tablist">
+          <button
+            class="tab-btn"
+            aria-selected="true"
+            role="tab"
+            id="tab-1"
+            tabindex="0"
+            aria-controls="panel-1"
+            data-tab-btn
+            #dataTabButton
+
+          >
+            Repositories
+          </button>
+          <button
+            class="tab-btn"
+            aria-selected="false"
+            role="tab"
+            id="tab-2"
+            tabindex="-1"
+            aria-controls="panel-2"
+            data-tab-btn
+            #dataTabButton
+
+            data-forked-tab-btn
+            #forkTabButton
+            (click)="this.updateForkRepo()"
+          >
+            Forked
+          </button>
+          <button
+            class="tab-btn"
+            aria-selected="false"
+            role="tab"
+            id="tab-3"
+            tabindex="-1"
+            aria-controls="panel-3"
+            #dataTabButton
+            data-follower-tab-btn
+            #followerTabButton
+            (click)="this.updateFollower()"
+          >
+            Followers
+          </button>
+          <button
+            class="tab-btn"
+            aria-selected="false"
+            role="tab"
+            id="tab-4"
+            tabindex="-1"
+            aria-controls="panel-4"
+            data-tab-btn
+            #dataTabButton
+            data-following-tab-btn
+            #followingTabButton
+            (click)="updateFollowing()"
+          >
+            Following
+          </button>
+        </div>
+
+        <div
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-1"
+          aria-labelledby="tab-1"
+          tabindex="0"
+          data-tab-panel
+          #dataTabPanel
+
+          data-repo-panel
+          #dataRepoPanel
+        ></div>
+        <div
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-2"
+          aria-labelledby="tab-2"
+          tabindex="0"
+          data-tab-panel
+          #dataTabPanel
+
+          data-fork-panel
+          #forkPanel
+          hidden
+        ></div>
+        <div
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-3"
+          aria-labelledby="tab-3"
+          tabindex="0"
+          data-tab-panel
+          #dataTabPanel
+
+          data-follower-panel
+          #followerPanel
+          hidden
+        ></div>
+        <div
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-4"
+          aria-labelledby="tab-4"
+          tabindex="0"
+          data-tab-panel
+          #dataTabPanel
+
+          data-following-panel
+          #followingPanel
+          hidden
+        ></div>
+      </section>
+
+      <!-- #ERROR CONTENT -->
+      <section class="error" data-error #error1></section>
+    </div>
+  </main>
+
+  <div class="container"  style="position: relative">
+    <div id="pagination" class="pagination"  #pagination style="" >
+
+    </div>
+    <div style="position: absolute; right: 32px; top: 0; border-radius: 10px; display: flex; align-items: center; background: rgb(31, 42, 71); height: 55px; padding: 8px">
+      <div>Max Entries: </div>
+      <select style="margin-left: 5px; background: transparent; border: none" (change)="updatePerPage($event)">
+        <option value="10">10</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+  </div>
+
+
+  <!-- #FOOTER -->
+  <footer class="footer containerfoo">
+    <p class="copyright">&copy; 2024 Anees</p>
+  </footer>
+
+</div>
